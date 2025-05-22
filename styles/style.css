@@ -41,20 +41,22 @@
   gap: 20px;
   border: 2px solid var(--main-color);
   padding: 120px 0;
-  overflow: hidden;
+  overflow: auto; /* Поменяла значение.
+  При 320px header__title не помещается в блок и выпадает за пределы,
+  и удалив overflow страница не будет соответствовать макету */
   background-color: var(--bg-color);
   inline-size: clamp(320px, 100%, 700px);
 }
 
 .header_title {
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   line-height: 100%;
   text-transform: uppercase;
 }
 
 .header_description {
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   line-height: 100%;
   text-transform: uppercase;
@@ -91,31 +93,31 @@
   object-position: center;
 }
 
-.first_1_img {
+.img_contrast {
   filter: contrast(150%);
 }
 
-.first_2_img {
+.img_blur {
   filter: blur(0.2rem);
 }
 
-.second_1_img {
+.img_opacity {
   filter: opacity(0.8);
 }
 
-.second_2_img {
+.img_grayscale {
   filter: grayscale(0.8);
 }
 
-.third_1_img {
+.img_saturate {
   filter: saturate(158%);
 }
 
-.third_2_img {
+.img_invert {
   filter: invert(0.7);
 }
 
-.now_img {
+.img_sepia_brightness {
   filter: sepia(80%) brightness(150%);
 }
 
@@ -124,7 +126,8 @@
   top: 23px;
   right: 11px;
   z-index: 1;
-  font-family: var(--accent-font);
+  opacity: 0.5;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   font-style: normal;
   text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
@@ -157,8 +160,8 @@
   margin-bottom: 0;
 }
 
-.zero_sprint .card_description {
-  padding: 25px 25px 22px;
+.card:first-child .card_description {
+  padding: 26px 25px 21px;
 }
 
 .buttons {
@@ -173,7 +176,7 @@
   position: relative;
   z-index: 1;
   color: var(--bg-color);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   mix-blend-mode: difference;
 }
@@ -190,33 +193,28 @@
 .button-style {
   position: relative;
   border: 2px solid var(--main-color);
-  inline-size: 130px;
   padding-block-start: 10.5px;
   padding-block-end: 10.5px;
   overflow: hidden;
   background-color: var(--bg-color);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
+  inline-size: 130px;
 }
 
-.third_1_sprint {
+.card:nth-child(6) {
   margin-top: 1px; /* Макет в фигме немного едет к низу, скорее всего это связано с бордерами, поэтому я добавила доп отступ, чтобы больше сходилось*/
-}
-
-.third_2_sprint .card_description_text {
-  padding-right: 4px; /* Чтобы перенести слово "пора" */
 }
 
 /* Футер — флекс-контейнер с флекс-карточкой. Размер кнопки и диалога реализован через clamp() */
 
-
-.footer {
+.dialog_floppy{
   display: flex;
   justify-content: center;
   padding: 51px 32px 100px;
 }
 
-.footer > .button-style {
+.dialog_floppy > .button-style {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -226,7 +224,7 @@
   inline-size: clamp(310px, 100%, 339px);
 }
 
-.footer .floppy {
+.dialog_floppy .floppy {
   position: relative;
   z-index: 2;
   object-fit: contain;
@@ -245,7 +243,6 @@
   border: 2px solid var(--main-color);
   padding: 30px 40px;
   overflow: hidden;
-  transition: opacity 0.3s ease-in-out;
   inline-size: clamp(341px, 100%, 357px);
 }
 
@@ -255,7 +252,6 @@
 
 .dialog:not([open]) {
   opacity: 0;
-  overflow: hidden;
   pointer-events: none;
 }
 
@@ -273,21 +269,25 @@
 
 .dialog__text {
   flex-grow: 0;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   line-height: 150%;
   text-transform: uppercase;
 }
 
 .dialog .button-style {
-  inline-size: 257px;
   padding-block-start: 9px;
   padding-block-end: 8px;
+  inline-size: 257px;
+}
+
+.dialog .button__text {
+  text-transform: uppercase;
 }
 
 /* Состояния кнопок */
 
-.button-style:focus {
+.button-style:focus-visible {
   box-shadow: 2px 2px 0 var(--main-color);
   outline: 0;
 }
@@ -317,10 +317,6 @@
 }
 
 @media (width >= 1440px) {
-  .page {
-    background-image: var(--bg-image);
-  }
-
   .header_card {
     padding: 128px 0;
   }
@@ -330,20 +326,16 @@
     right: 25px;
   }
 
-  .zero_sprint .card_description {
+  .сard:first-child .card_description {
     padding: 26px 25px 22px;
   }
 
-  .footer {
-    padding: 50px 32px 100px;
-  }
-
-  .footer > .button-style {
+  .dialog_floppy > .button-style {
     flex-direction: row;
     padding: 15px 0;
   }
 
-  .footer .floppy {
+  .dialog_floppy .floppy {
     inline-size: 21px;
   }
 
@@ -351,9 +343,13 @@
     padding: 30px 30px;
   }
 
+  .dialog__description > .floppy {
+    inline-size: 39px;
+  }
+
   .dialog .button-style {
-    inline-size: 293px;
     padding-block-start: 9px;
     padding-block-end: 9px;
+    inline-size: 293px;
   }
 }
