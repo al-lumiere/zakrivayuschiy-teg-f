@@ -208,7 +208,7 @@
 
 /* Футер — флекс-контейнер с флекс-карточкой. Размер кнопки и диалога реализован через clamp() */
 
-.dialog_floppy{
+.dialog_floppy {
   display: flex;
   justify-content: center;
   padding: 51px 32px 100px;
