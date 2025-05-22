@@ -91,31 +91,31 @@
   object-position: center;
 }
 
-.first_1_sprint img {
-  filter: contrast(120%);
+.first_1_img {
+  filter: contrast(150%);
 }
 
-.first_2_sprint img {
+.first_2_img {
   filter: blur(0.2rem);
 }
 
-.second_1_sprint img {
+.second_1_img {
   filter: opacity(0.8);
 }
 
-.second_2_sprint img {
+.second_2_img {
   filter: grayscale(0.8);
 }
 
-.third_1_sprint img {
+.third_1_img {
   filter: saturate(158%);
 }
 
-.third_2_sprint img {
+.third_2_img {
   filter: invert(0.7);
 }
 
-.now_sprint img {
+.now_img {
   filter: sepia(80%) brightness(150%);
 }
 
