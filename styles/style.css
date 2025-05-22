@@ -91,10 +91,6 @@
   object-position: center;
 }
 
-.zero_sprint picture {
-  filter: brightness(200%);
-}
-
 .first_1_sprint picture {
   filter: contrast(120%);
 }
@@ -229,7 +225,7 @@
   inline-size: clamp(310px, 100%, 339px);
 }
 
-.floppy_footer {
+.footer .floppy {
   position: relative;
   z-index: 2;
   object-fit: contain;
@@ -268,7 +264,7 @@
   gap: 20px;
 }
 
-.floppy_dialog {
+.dialog__description > .floppy {
   flex-shrink: 0;
   object-fit: contain;
   inline-size: 39px;
@@ -283,8 +279,7 @@
 }
 
 .dialog .button-style {
-  padding-inline-start: 112.5px;
-  padding-inline-end: 112.5px;
+  inline-size: 257px;
   padding-block-start: 9px;
   padding-block-end: 8px;
 }
@@ -347,7 +342,7 @@
     padding: 15px 0;
   }
 
-  .floppy_footer {
+  .footer .floppy {
     inline-size: 21px;
   }
 
@@ -356,8 +351,7 @@
   }
 
   .dialog .button-style {
-    padding-inline-start: 130.5px;
-    padding-inline-end: 130.5px;
+    inline-size: 293px;
     padding-block-start: 9px;
     padding-block-end: 9px;
   }
