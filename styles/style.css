@@ -11,6 +11,354 @@
 */
 
 .page {
+  color: var(--main-color);
+  font-size: var(--main-font-size);
+  font-style: normal;
+  line-height: normal;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+}
+
+/* Хэдер — флекс-контейнер с флекс-карточкой. Размер заголовков и карточки реализован через clamp() */
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.header_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 2px solid var(--main-color);
+  padding: 120px 0;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  inline-size: clamp(320px, 100%, 700px);
+}
+
+.header_title {
+  font-family: var(--accent-font);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.header_description {
+  font-family: var(--accent-font);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+/* Cекции — флекс-контейнер с флекс-карточкой. Размер заголовков и паддингов реализован через clamp() */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.card {
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  inline-size: clamp(320px, 100%, 700px);
+}
+
+.card_title {
+  border-bottom: 2px solid var(--main-color);
+  padding: 4px 10px;
+  font-size: var(--main-font-size);
+  font-variation-settings: 'wght' var(--bold-font-weight);
+}
+
+.card_img {
+  position: relative;
+  width: 100%;
+  border: none;
+  object-fit: contain;
+  object-position: center;
+}
+
+.zero_sprint picture {
+  filter: brightness(200%);
+}
+
+.first_1_sprint picture {
+  filter: contrast(120%);
+}
+
+.first_2_sprint picture {
+  filter: blur(0.2rem);
+}
+
+.second_1_sprint picture {
+  filter: opacity(0.8);
+}
+
+.second_2_sprint picture {
+  filter: grayscale(0.8);
+}
+
+.third_1_sprint picture {
+  filter: saturate(158%);
+}
+
+.third_2_sprint picture {
+  filter: invert(0.7);
+}
+
+.now_sprint picture {
+  filter: sepia(80%) brightness(150%);
+}
+
+.watermark {
+  position: absolute;
+  top: 23px;
+  right: 11px;
+  z-index: 1;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  font-style: normal;
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+  mix-blend-mode: hard-light;
+}
+
+@supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+  .watermark {
+   text-shadow: none;
+    -webkit-text-stroke: 1px #FFF;
+   text-stroke: 1px #fff;
+  }
+}
+
+.card_description {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-top: 2px solid var(--main-color);
+  padding: 26px 25px 21px;
+}
+
+.card_description_text {
+  margin-bottom: 2px;
+  font-size: var(--main-font-size);
+  line-height: 21px;
+}
+
+.card_description_text:last-of-type {
+  margin-bottom: 0;
+}
+
+.zero_sprint .card_description {
+  padding: 25px 25px 22px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: start;
+  gap: 4px;
+}
+
+.button__text {
+  position: relative;
+  z-index: 1;
+  color: var(--bg-color);
+  font-family: var(--accent-font);
+  font-size: 14px;
+  mix-blend-mode: difference;
+}
+
+.card__icon-button {
+  align-self: center;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  background-color: var(--bg-color);
+  transition: border-color 0.3s ease;
+}
+
+.button-style {
+  position: relative;
+  border: 2px solid var(--main-color);
+  inline-size: 130px;
+  padding-block-start: 10.5px;
+  padding-block-end: 10.5px;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.third_1_sprint {
+  margin-top: 1px; /* Макет в фигме немного едет к низу, скорее всего это связано с бордерами, поэтому я добавила доп отступ, чтобы больше сходилось*/
+}
+
+.third_2_sprint .card_description_text {
+  padding-right: 4px; /* Чтобы перенести слово "пора" */
+}
+
+/* Футер — флекс-контейнер с флекс-карточкой. Размер кнопки и диалога реализован через clamp() */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 51px 32px 100px;
+}
+
+.footer > .button-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 0;
+  inline-size: clamp(310px, 100%, 339px);
+}
+
+.floppy_footer {
+  position: relative;
+  z-index: 2;
+  object-fit: contain;
+  color: var(--bg-color);
+  inline-size: 28px;
+  mix-blend-mode: difference;
+}
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: min-content;
+  border: 2px solid var(--main-color);
+  padding: 30px 40px;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out;
+  inline-size: clamp(341px, 100%, 357px);
+}
+
+.dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.dialog:not([open]) {
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dialog__description {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.floppy_dialog {
+  flex-shrink: 0;
+  object-fit: contain;
+  inline-size: 39px;
+}
+
+.dialog__text {
+  flex-grow: 0;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.dialog .button-style {
+  padding-inline-start: 112.5px;
+  padding-inline-end: 112.5px;
+  padding-block-start: 9px;
+  padding-block-end: 8px;
+}
+
+/* Состояния кнопок */
+
+.button-style:focus {
+  box-shadow: 2px 2px 0 var(--main-color);
+  outline: 0;
+}
+
+.button-style::after {
+  content: ' ';
+  position: absolute;
+  inset: 0;
+  background-color: var(--main-color);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+  inline-size: 100%;
+  block-size: 110%;
+}
+
+.button-style:is(:hover)::after {
+  transform: scaleX(1);
+}
+
+.card__icon-button:focus {
+  outline: 0;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--main-color);
+}
+
+@media (width >= 1440px) {
+  .page {
+    background-image: var(--bg-image);
+  }
+
+  .header_card {
+    padding: 128px 0;
+  }
+
+  .watermark {
+    top: 27px;
+    right: 25px;
+  }
+
+  .zero_sprint .card_description {
+    padding: 26px 25px 22px;
+  }
+
+  .footer {
+    padding: 50px 32px 100px;
+  }
+
+  .footer > .button-style {
+    flex-direction: row;
+    padding: 15px 0;
+  }
+
+  .floppy_footer {
+    inline-size: 21px;
+  }
+
+  .dialog {
+    padding: 30px 30px;
+  }
+
+  .dialog .button-style {
+    padding-inline-start: 130.5px;
+    padding-inline-end: 130.5px;
+    padding-block-start: 9px;
+    padding-block-end: 9px;
+  }
 }
