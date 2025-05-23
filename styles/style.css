@@ -242,7 +242,6 @@
   max-width: min-content;
   border: 2px solid var(--main-color);
   padding: 30px 40px;
-  overflow: hidden;
   inline-size: clamp(341px, 100%, 357px);
 }
 
